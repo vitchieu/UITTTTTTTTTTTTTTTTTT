@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int main(){
+    long long n ;
+    cin >> n;
+    long long sodaong=0;
+    if (n<0){
+        cout << "false"<<endl;
+        return 0;
+    }
+    else {
+        long long sobandau=n;
+        for (n; n>0; n/=10){
+            int x=n%10;
+            sodaong = sodaong*  10 + x;
+        }
+        if (sobandau==sodaong){
+            cout << "true"<<endl;
+        }
+        else {
+            cout << "false" <<endl;
+        }
+    }
+    return 0;
+}
