@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+long long sum_common_prime(int m, int n){
+    long long uocchung=0;
+    if (m<n){
+        for (long long i=2; i<=m;i++){
+            if (m%i==0 && n%i==0){
+                uocchung +=i;
+                while (m % i == 0) m /= i;
+                while (n % i == 0) n /= i;
+            }
+            else if (m % i == 0){
+                while (m % i == 0) m /= i;
+            }
+        }
+    }
+    else{
+        for (long long i=2; i<=n;i++){
+            if (m%i==0 && n%i==0){
+                uocchung +=i;
+                while (m % i == 0) m /= i;
+                while (n % i == 0) n /= i;
+            }
+            else if (n % i == 0) {
+                while (n % i == 0) n /= i;
+            } 
+        }
+    }
+    if (uocchung ==0 ){
+        return -1;
+    }
+    return uocchung;
+}
+int main () {
+    int m,n;
+    cin >> m >>n;
+    cout << sum_common_prime(m,n);
+}
