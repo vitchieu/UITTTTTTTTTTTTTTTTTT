@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+void input(int &n) {
+    cin >> n;
+}
+int input() {
+    int m;
+    cin >> m;
+    return m;
+}
+long long gcd(int m, int n){
+    for (; n != 0; ) {
+        int so_du = m % n;
+        m = n;
+        n = so_du;
+    }
+    return m;
+}
+int main (){
+    int m, n;
+    input(n);
+    m=input();
+    cout<< gcd(m,n);
+}
