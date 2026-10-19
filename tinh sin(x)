@@ -1,0 +1,26 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main(){
+    double x;
+    cin >> x;
+    double sohang =x;
+    double tong =x;
+    for (int n=1 ; ;n++){
+        double tri;
+        if (sohang <0){
+            tri = -sohang;
+        }
+        else {
+            tri =sohang;
+        }
+        if (tri < 0.0001){
+            break;
+        }
+        sohang =-sohang *x*x / ((2*n)*(2*n+1));
+        tong += sohang;
+    }
+    cout << fixed << setprecision(4);
+    cout << tong <<endl;
+    return 0;
+}
