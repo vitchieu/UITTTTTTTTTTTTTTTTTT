@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+int main () {
+    int n;
+    cin >> n;
+    int a[100];
+    for (int i = 0; i < n ; i++){
+        cin >> a[i];
+    }
+    int lon = a[0];
+    int dem =1 ;
+    for (int i = 1; i <n ; i++){
+        if (a[i] > lon){
+            lon = a[i];
+            dem =1;
+        }
+        else if (a[i]== lon){
+            dem ++;
+        }
+    }
+    cout  << lon << "\n\n";
+    cout  << dem << "\n\n";
+    return 0;
+}
