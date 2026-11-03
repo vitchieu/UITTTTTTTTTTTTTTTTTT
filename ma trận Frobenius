@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+int main(){
+    int n,m;
+    cin >> n >> m;
+    int a[100][100];
+    for (int i = 0 ; i < n; i++){
+        for (int j=0; j < m; j++){
+            cin >> a[i][j];
+        }
+    }
+    int frobenius = -1;
+    bool dung = true;
+    for (int i = 0 ; i < n; i++){
+        for (int j=0; j < m; j++){
+            if (i==j){
+                if (a[i][j] != 1){
+                    dung = false;
+                    break;
+                }
+            }
+            else if ( i < j){
+                if (a[i][j] !=0){
+                    dung = false;
+                    break;
+                }
+            }
+            else{
+                if (a[i][j] !=0){
+                    if( frobenius == -1){
+                        frobenius =j;
+                    }
+                    else if (frobenius != j){
+                        dung = false;
+                        break;
+                    }
+                }
+            }
+        }
+        if (!dung){
+            break;
+        }
+    }
+    if (dung){
+        cout<< "Yes";
+    }
+    else {
+        cout << "No";
+    }
+    return 0;
+}
