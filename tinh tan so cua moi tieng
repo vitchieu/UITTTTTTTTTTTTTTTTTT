@@ -1,0 +1,61 @@
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+#define MAX 300
+int main(){
+    char s[MAX];
+    s[0] = '\0';
+    fgets(s, MAX, stdin);
+    int up =0;
+    for(;s[up] != '\0'; up++);
+    for(;up>0 && (s[up-1] == '\n' || s[up-1] == '\r'); up--){
+        s[up -1] ='\0';
+    }
+    if(up == 0){
+        cout << "Chuoi rong."<< endl;
+    }
+    bool dem[MAX] = {false};
+    for (int i = 0; i < up;){
+        if(s[i] == ' '){
+            i++;
+        }
+        else{
+            int dau = i;
+            for (; i < up && s[i] != ' '; i++);
+            int cuoi = i;
+            if (!dem[dau]){
+                int demm =1;
+                int up1 = cuoi -dau;
+                for (int j = cuoi; j < up;){
+                    if (s[j] == ' '){
+                        j++;
+                    }
+                    else{
+                        int dau1 = j;
+                        for(; j < up && s[j] != ' '; j++);
+                        int cuoi1 =j;
+                        int up2 = cuoi1 -dau1;
+                        if (up1 == up2){
+                            bool giong =true;
+                            for(int k =0; k < up1 ;  k++){
+                                if(s[dau + k] != s[dau1 +k]){
+                                    giong = false;
+                                    break;
+                                }
+                            }
+                            if (giong){
+                                demm++;
+                                dem[dau1] =true;
+                            }
+                        }
+                    }
+                }
+                for (int k = dau ; k < cuoi; k++){
+                    cout << s[k];
+                }
+                cout << ":"<<" "<< demm<< endl;
+            }
+        }
+    }
+    return 0;
+}
